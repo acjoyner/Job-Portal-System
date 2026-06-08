@@ -1,0 +1,14 @@
+com/acjoyner/job/dto/CompanyResponse.class
+com/acjoyner/job/domain/SocialPlatform.class
+com/acjoyner/job/domain/IndustryType.class
+com/acjoyner/job/dto/response/UserResponse.class
+com/acjoyner/job/domain/UserStatus.class
+com/acjoyner/job/dto/SocialLinkResponse.class
+com/acjoyner/job/domain/UserRole.class
+com/acjoyner/job/dto/SocialLinkResponse$SocialLinkResponseBuilder.class
+com/acjoyner/job/domain/CompanySize.class
+com/acjoyner/job/domain/CompanyStatus.class
+com/acjoyner/job/dto/CompanyResponse$CompanyResponseBuilder.class
+com/acjoyner/job/domain/CompanyType.class
+com/acjoyner/job/dto/CompanyRequest.class
+com/acjoyner/job/dto/CompanyRequest$CompanyRequestBuilder.class

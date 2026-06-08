@@ -1,0 +1,12 @@
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/domain/CompanySize.java
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/domain/CompanyStatus.java
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/domain/CompanyType.java
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/domain/IndustryType.java
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/domain/SocialPlatform.java
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/domain/UserRole.java
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/domain/UserStatus.java
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/dto/ApiResonse.java
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/dto/CompanyRequest.java
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/dto/CompanyResponse.java
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/dto/SocialLinkResponse.java
+/Users/anthonyjoyner/Documents/Projects/job-portal-system/common-lib/src/main/java/com/acjoyner/job/dto/response/UserResponse.java
