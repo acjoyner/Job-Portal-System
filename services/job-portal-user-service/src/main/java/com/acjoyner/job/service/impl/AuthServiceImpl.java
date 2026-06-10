@@ -21,8 +21,8 @@ import com.acjoyner.job.payload.AuthResponse;
 import com.acjoyner.job.payload.LoginRequest;
 import com.acjoyner.job.payload.SignupRequest;
 import com.acjoyner.job.repository.UserRepository;
-import com.acjoyner.job.service.AuthService;
 import com.acjoyner.job.security.JwtProvider;
+import com.acjoyner.job.service.AuthService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

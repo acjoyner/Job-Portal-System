@@ -73,6 +73,7 @@ public class Company {
     private CompanyStatus status;
 
     @Column(name = "is_verified")
+    @Builder.Default
     private boolean verified = false;
 
     private LocalDateTime verifiedAt;
@@ -87,6 +88,7 @@ public class Company {
     @CollectionTable(name = "company_social_links", joinColumns = @JoinColumn(name = "company_id"))
     private List<SocialLink> socialLinks;
 
+    @Builder.Default
     private Boolean active = true;
 
     @CreationTimestamp

@@ -17,7 +17,7 @@ public interface UserService {
     UserResponse updateProfile(String email, UpdateUserRequest req) throws Exception;
 
     // admin action 
-    UserResponse susendUser(Long id) throws Exception;
+    UserResponse suspendUser(Long id) throws Exception;
     UserResponse activateUser(Long id) throws Exception;
     UserResponse deleteUser(Long id) throws Exception;
 

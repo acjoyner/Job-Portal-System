@@ -19,7 +19,7 @@ public interface CompanyService {
 
     CompanyResponse getMyCompany(Long ownerId) throws Exception;
 
-    List<CompanyResponse> getAllComponies(CompanyType companyType,
+    List<CompanyResponse> getAllCompanies(CompanyType companyType,
             IndustryType industryType,
             CompanyStatus companyStatus);
 
@@ -29,7 +29,7 @@ public interface CompanyService {
 
     CompanyResponse verifyCompany(Long companyId) throws Exception;
 
-    void deleteComnay(Long companyId, Long ownerId) throws Exception;
+    void deleteCompany(Long companyId, Long ownerId) throws Exception;
 
     CompanyResponse deactivateCompany(Long companyId) throws Exception;
 

@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse susendUser(Long id) throws Exception {
+    public UserResponse suspendUser(Long id) throws Exception {
         User user = getUserById(id);
         user.setStatus(UserStatus.SUSPENDED);
         user.setSuspendedAt(LocalDateTime.now());

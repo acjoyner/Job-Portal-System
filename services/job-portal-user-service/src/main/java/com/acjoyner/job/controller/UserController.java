@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.acjoyner.job.dto.response.UserResponse;
@@ -13,7 +12,6 @@ import com.acjoyner.job.model.User;
 import com.acjoyner.job.payload.UpdateUserRequest;
 import com.acjoyner.job.service.UserService;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -62,7 +60,7 @@ public class UserController {
     @PatchMapping("/api/users/{userId}/suspend")
     public ResponseEntity<UserResponse> suspendUser(
             @PathVariable Long userId) throws Exception {
-        return ResponseEntity.ok(userService.susendUser(userId));
+        return ResponseEntity.ok(userService.suspendUser(userId));
     }
 
     @PatchMapping("/api/users/{userId}/activate")

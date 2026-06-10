@@ -38,8 +38,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole role= UserRole.ROLE_JOB_SEEKER;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
-    private UserStatus status;
+    private UserStatus status = UserStatus.ACTIVE;
 
     @CreationTimestamp
     @Column(nullable= false, updatable = false)

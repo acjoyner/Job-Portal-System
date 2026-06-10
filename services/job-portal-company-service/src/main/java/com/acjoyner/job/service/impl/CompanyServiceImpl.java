@@ -1,7 +1,5 @@
 package com.acjoyner.job.service.impl;
 
-import com.acjoyner.job.repository.CompanyRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +14,7 @@ import com.acjoyner.job.dto.SocialLinkResponse;
 import com.acjoyner.job.mapper.CompanyMapper;
 import com.acjoyner.job.model.Company;
 import com.acjoyner.job.model.SocialLink;
+import com.acjoyner.job.repository.CompanyRepository;
 import com.acjoyner.job.service.CompanyService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,11 +27,11 @@ public class CompanyServiceImpl implements CompanyService {
 
     public CompanyResponse createCompany(Long ownerId, CompanyRequest req) throws Exception {
         if (companyRepository.existsByOwnerId(ownerId)) {
-            throw new Exception("You already have a company registed. " +
+            throw new Exception("You already have a company registered. " +
                     "Only one company per account is allowed.");
         }
         if (companyRepository.existsByName(req.getName())) {
-            throw new Exception("Company already exists. Please choose a differnt name");
+            throw new Exception("Company already exists. Please choose a different name");
         }
 
         if (req.getRegistrationNumber() != null &&
@@ -111,7 +110,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List<CompanyResponse> getAllComponies(
+    public List<CompanyResponse> getAllCompanies(
             CompanyType companyType,
             IndustryType industryType,
             CompanyStatus companyStatus) {
@@ -140,7 +139,7 @@ public class CompanyServiceImpl implements CompanyService {
         if (req.getRegistrationNumber() != null
                 && !req.getRegistrationNumber().equals(company.getRegistrationNumber())
                 && companyRepository.existsByRegistrationNumber(req.getRegistrationNumber())) {
-            throw new Exception("Company alread exists. Please choose a different registration number.");
+            throw new Exception("Company already exists. Please choose a different registration number.");
         }
 
         company.setName(req.getName());
@@ -176,7 +175,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void deleteComnay(Long companyId, Long ownerId) throws Exception {
+    public void deleteCompany(Long companyId, Long ownerId) throws Exception {
         Company company = getCompanyEntityById(companyId);
         assertOwner(company, ownerId);
         companyRepository.delete(company);

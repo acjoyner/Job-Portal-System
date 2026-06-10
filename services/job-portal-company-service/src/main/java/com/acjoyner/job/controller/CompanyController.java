@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.acjoyner.job.domain.CompanyStatus;
 import com.acjoyner.job.domain.CompanyType;
 import com.acjoyner.job.domain.IndustryType;
-import com.acjoyner.job.dto.ApiResonse;
+import com.acjoyner.job.dto.ApiResponse;
 import com.acjoyner.job.dto.CompanyRequest;
 import com.acjoyner.job.dto.CompanyResponse;
 import com.acjoyner.job.service.CompanyService;
@@ -43,14 +43,14 @@ public class CompanyController {
                 .body(companyService.createCompany(ownerId, companyRequest));
     }
 
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<CompanyResponse> getCompanyById(
             @PathVariable Long id) throws Exception {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(companyService.getCompanyById(id));
     }
 
-    @PostMapping("/my")
+    @GetMapping("/my")
     public ResponseEntity<CompanyResponse> getMyCompany(
             @RequestHeader("X-User-Id") Long ownerId) throws Exception {
         return ResponseEntity.status(HttpStatus.OK)
@@ -62,7 +62,7 @@ public class CompanyController {
             @RequestParam(required = false) CompanyType companyType,
             @RequestParam(required = false) IndustryType industryType,
             @RequestParam(required = false) CompanyStatus status) {
-        return ResponseEntity.ok(companyService.getAllComponies(companyType, industryType, status));
+        return ResponseEntity.ok(companyService.getAllCompanies(companyType, industryType, status));
     }
 
     @PutMapping("/{id}")
@@ -88,11 +88,11 @@ public class CompanyController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResonse> deleteCompany(
+    public ResponseEntity<ApiResponse> deleteCompany(
         @PathVariable Long id,
         @RequestHeader("X-User-Id") Long ownerId) throws Exception {
-            companyService.deleteComnay(id, ownerId);
-            return ResponseEntity.ok(new ApiResonse("Company sucessfully deleted", true));
+            companyService.deleteCompany(id, ownerId);
+            return ResponseEntity.ok(new ApiResponse("Company successfully deleted", true));
         }
 
 }

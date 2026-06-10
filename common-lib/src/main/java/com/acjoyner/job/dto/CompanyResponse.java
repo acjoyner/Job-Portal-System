@@ -41,6 +41,7 @@ public class CompanyResponse {
     private String registrationNumber;
     private Long ownerId;
     private List<SocialLinkResponse> socialLinks;
+    @Builder.Default
     private Boolean active = true;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

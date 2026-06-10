@@ -9,6 +9,7 @@ import com.acjoyner.job.domain.CompanyStatus;
 import com.acjoyner.job.domain.CompanyType;
 import com.acjoyner.job.domain.IndustryType;
 import com.acjoyner.job.model.Company;
+
 import java.util.List;
 import java.util.Optional;
 

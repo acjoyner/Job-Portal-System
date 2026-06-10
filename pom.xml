@@ -22,7 +22,7 @@
   </modules>
 
   <properties>
-    <java.version>26</java.version>
+    <java.version>17</java.version>
     <spring-boot.version>4.0.6</spring-boot.version>
     <spring.cloud.version>2025.1.1</spring.cloud.version>
     <jwt.version>0.12.6</jwt.version>
