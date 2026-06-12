@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import com.acjoyner.job.domain.CompanyStatus;
 import com.acjoyner.job.domain.CompanyType;
 import com.acjoyner.job.domain.IndustryType;
-import com.acjoyner.job.dto.CompanyRequest;
 import com.acjoyner.job.dto.CompanyResponse;
 import com.acjoyner.job.model.Company;
+import com.acjoyner.job.payload.CompanyRequest;
 
 @Service
 public interface CompanyService {

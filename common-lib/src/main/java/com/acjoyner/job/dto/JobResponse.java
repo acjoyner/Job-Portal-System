@@ -3,12 +3,12 @@ package com.acjoyner.job.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import com.acjoyner.job.domain.ExperienceLevel;
 import com.acjoyner.job.domain.JobStatus;
 import com.acjoyner.job.domain.JobType;
 import com.acjoyner.job.domain.WorkMode;
-import com.acjoyner.job.dto.CompanySummaryResponse;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,9 +31,9 @@ public class JobResponse {
     private Long employerId;
     private Long companyId;
     
-    // private JobCategoryResponse category;
-    // private Set<JobSkillResponse> skills;
-    // private Set<JobTagResponse> tags;
+    private JobCategoryResponse category;
+    private Set<JobSkillResponse> skills;
+    private Set<JobTagResponse> tags;
 
     private String address;
     private String city;

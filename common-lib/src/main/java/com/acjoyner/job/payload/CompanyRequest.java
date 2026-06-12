@@ -1,4 +1,4 @@
-package com.acjoyner.job.dto;
+package com.acjoyner.job.payload;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import com.acjoyner.job.domain.CompanySize;
 import com.acjoyner.job.domain.CompanyType;
 import com.acjoyner.job.domain.IndustryType;
+import com.acjoyner.job.dto.SocialLinkResponse;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;

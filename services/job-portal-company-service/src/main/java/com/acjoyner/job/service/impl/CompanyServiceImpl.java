@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import com.acjoyner.job.domain.CompanyStatus;
 import com.acjoyner.job.domain.CompanyType;
 import com.acjoyner.job.domain.IndustryType;
-import com.acjoyner.job.dto.CompanyRequest;
 import com.acjoyner.job.dto.CompanyResponse;
 import com.acjoyner.job.dto.SocialLinkResponse;
 import com.acjoyner.job.mapper.CompanyMapper;
 import com.acjoyner.job.model.Company;
 import com.acjoyner.job.model.SocialLink;
+import com.acjoyner.job.payload.CompanyRequest;
 import com.acjoyner.job.repository.CompanyRepository;
 import com.acjoyner.job.service.CompanyService;
 

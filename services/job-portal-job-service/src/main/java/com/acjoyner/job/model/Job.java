@@ -22,6 +22,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -59,9 +61,15 @@ public class Job {
     @Column(nullable = false)
     private Long employeeId;
 
-    // private JobCategory category;
-    // private Set<JobSkill> skills;
-    // private Set<JobTag> tags;
+    @ManyToOne
+    private JobCategory category;
+
+    @ManyToMany
+    private Set<JobSkill> skills;
+
+    @ManyToMany
+    private Set<JobTag> tags;
+    
     @Embedded
     private JobLocation location;
 

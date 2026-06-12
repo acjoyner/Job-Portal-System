@@ -15,8 +15,8 @@ import com.acjoyner.job.domain.CompanyStatus;
 import com.acjoyner.job.domain.CompanyType;
 import com.acjoyner.job.domain.IndustryType;
 import com.acjoyner.job.dto.ApiResponse;
-import com.acjoyner.job.dto.CompanyRequest;
 import com.acjoyner.job.dto.CompanyResponse;
+import com.acjoyner.job.payload.CompanyRequest;
 import com.acjoyner.job.service.CompanyService;
 
 import jakarta.validation.Valid;

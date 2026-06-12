@@ -60,7 +60,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.acjoyner.job.companyservice.JobPortalCompanyServiceApplication</mainClass>
+					<mainClass>com.acjoyner.job.JobPortalCompanyServiceApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

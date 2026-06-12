@@ -1,28 +1,34 @@
 package com.acjoyner.job.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import com.acjoyner.job.Mapper.JobMapper;
 import com.acjoyner.job.domain.JobStatus;
 import com.acjoyner.job.dto.CompanyResponse;
 import com.acjoyner.job.dto.JobRequest;
 import com.acjoyner.job.dto.JobResponse;
+import com.acjoyner.job.mapper.JobMapper;
 import com.acjoyner.job.model.Job;
+import com.acjoyner.job.model.JobCategory;
+import com.acjoyner.job.model.JobSkill;
+import com.acjoyner.job.model.JobTag;
 import com.acjoyner.job.model.embeddable.JobLocation;
 import com.acjoyner.job.model.embeddable.SalaryRange;
 import com.acjoyner.job.payload.JobSearchRequest;
 import com.acjoyner.job.repository.JobRepository;
 import com.acjoyner.job.repository.JobSpecification;
+import com.acjoyner.job.service.JobCategoryService;
 import com.acjoyner.job.service.JobService;
+import com.acjoyner.job.service.JobSkillService;
+import com.acjoyner.job.service.JobTagService;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 @AllArgsConstructor
 @Data
@@ -30,11 +36,21 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class JobServiceImpl implements JobService {
 
-    public final JobRepository jobRepository;
+    private final JobRepository jobRepository;
+    private final JobCategoryService categoryService;
+    private final JobSkillService skillService;
+    private final JobTagService tagService;
 
     @Override
-    public JobResponse createJob(Long employerId, JobRequest req) {
-        // todo: fetch company by employer id
+    public JobResponse createJob(Long employerId, JobRequest req) throws Exception {
+
+        JobCategory category = categoryService.getCategoryEntityById(req.getCategoryId());
+
+        Set<JobSkill> skills = req.getSkillIds() != null ? skillService.getSkillsByIds(req.getSkillIds())
+                : Collections.emptySet();
+
+        Set<JobTag> tags = req.getTagIds() != null ? tagService.getTagsByIds(req.getTagIds())
+                : Collections.emptySet();
 
         Long companyId = 1L;
         Job job = Job.builder()
@@ -45,9 +61,9 @@ public class JobServiceImpl implements JobService {
                 .benefits(req.getBenefits())
                 .companyId(req.getCompanyId())
                 .employeeId(employerId)
-                // .category(category)
-                // .skills(skills)
-                // .tags(tags)
+                .category(category)
+                .skills(skills)
+                .tags(tags)
                 .location(buildLocation(req))
                 .salaryRange(buildSalaryRang(req))
                 .jobType(req.getJobType())
@@ -114,19 +130,26 @@ public class JobServiceImpl implements JobService {
     @Override
     public JobResponse updateJob(Long jobId, Long employerId, JobRequest req) throws Exception {
         Job job = jobRepository.findById(jobId).orElseThrow(
-            ()-> new Exception("Job not found")
-        );
+                () -> new Exception("Job not found"));
 
         assetEmployer(job, employerId);
+
+        JobCategory category = categoryService.getCategoryEntityById(req.getCategoryId());
+
+        Set<JobSkill> skills = req.getSkillIds() != null ? skillService.getSkillsByIds(req.getSkillIds())
+                : Collections.emptySet();
+
+        Set<JobTag> tags = req.getTagIds() != null ? tagService.getTagsByIds(req.getTagIds())
+                : Collections.emptySet();
         job.setTitle(req.getTitle());
         job.setDescription(req.getDescription());
         job.setRequirements(req.getRequirements());
         job.setResponsibilities(req.getResponsibilities());
         job.setBenefits(req.getBenefits());
-        // todo:  add these
-        // job.setCategory(req.getCategory());
-        // job.setSkills(req.getSkills());
-        // job.setTags(req.setTags());
+
+        job.setCategory(category);
+        job.setSkills(skills);
+        job.setTags(tags);
         job.setLocation(buildLocation(req));
         job.setSalaryRange(buildSalaryRang(req));
         job.setJobType(req.getJobType());
@@ -140,10 +163,10 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public JobResponse publishJob(Long jobId, Long employerId) throws Exception {
-          Job job = jobRepository.findById(jobId).orElseThrow(
+        Job job = jobRepository.findById(jobId).orElseThrow(
                 () -> new Exception("Job not found"));
         assetEmployer(job, employerId);
-        if(job.getStatus() == JobStatus.CLOSED || job.getStatus() == JobStatus.EXPIRED){
+        if (job.getStatus() == JobStatus.CLOSED || job.getStatus() == JobStatus.EXPIRED) {
             throw new Exception("Job is expired.");
         }
         job.setStatus(JobStatus.OPEN);
@@ -152,14 +175,12 @@ public class JobServiceImpl implements JobService {
         return convertToResponse(jobRepository.save(job));
     }
 
-    
-
     @Override
     public JobResponse closeJob(Long jobId, Long employerId) throws Exception {
         Job job = jobRepository.findById(jobId).orElseThrow(
                 () -> new Exception("Job not found"));
         assetEmployer(job, employerId);
-        
+
         job.setStatus(JobStatus.CLOSED);
         job.setClosedAt(LocalDateTime.now());
         job.setActive(false);
@@ -168,23 +189,22 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void deleteJob(Long jobId, Long employerId) throws Exception {
-          Job job = jobRepository.findById(jobId).orElseThrow(
+        Job job = jobRepository.findById(jobId).orElseThrow(
                 () -> new Exception("Job not found"));
         assetEmployer(job, employerId);
         jobRepository.delete(job);
-        
-      
+
     }
 
     @Override
     public List<JobResponse> getAllJobsAdmin() {
         return jobRepository.findAll()
-        .stream()
-        .map(this::convertToResponse).toList();
+                .stream()
+                .map(this::convertToResponse).toList();
     }
 
     private void assetEmployer(Job job, Long employerId) throws Exception {
-        if(!job.getEmployeeId().equals(employerId)){
+        if (!job.getEmployeeId().equals(employerId)) {
             throw new Exception("You are not the employer who posted this job.");
         }
     }

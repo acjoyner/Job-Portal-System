@@ -78,7 +78,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.acjoyner.job.userservice.JobPortalUserServiceApplication</mainClass>
+					<mainClass>com.acjoyner.job.JobPortalUserServiceApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
